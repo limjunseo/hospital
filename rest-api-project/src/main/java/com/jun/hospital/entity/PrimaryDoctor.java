@@ -37,7 +37,7 @@ public class PrimaryDoctor {
 			insertable = false, updatable = false)
 	private Doctor doctor;
 	
-	public PrimaryDoctor() {
+	protected PrimaryDoctor() {
 		
 	}
 	
