@@ -2,6 +2,8 @@ package com.jun.hospital.entity;
 
 import java.time.LocalDate;
 
+import com.jun.hospital.dto.DoctorRequest;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,4 +25,12 @@ public class Doctor {
 	
 	private LocalDate exp_years;
 
+	public static Doctor of(DoctorRequest doctorRequest) {
+		Doctor doctor = new Doctor();
+		doctor.speciality = doctorRequest.getSpeciality();
+		doctor.name = doctorRequest.getName();
+		doctor.exp_years = doctorRequest.getExp_years();
+		
+		return doctor;
+	}
 }

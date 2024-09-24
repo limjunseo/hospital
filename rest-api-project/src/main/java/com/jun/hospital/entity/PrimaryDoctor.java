@@ -9,8 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import lombok.Getter;
 
-@Entity
+@Entity @Getter
 public class PrimaryDoctor {
 	
 	@Embeddable
@@ -38,7 +39,14 @@ public class PrimaryDoctor {
 	private Doctor doctor;
 	
 	protected PrimaryDoctor() {
-		
+		 
+	}
+	
+	public static PrimaryDoctor assignPrimaryDoctor(Patient patient , Doctor doctor) {
+		PrimaryDoctor primaryDoctor = new PrimaryDoctor();
+		primaryDoctor.doctor = doctor;
+		primaryDoctor.patient = patient;
+		return primaryDoctor;
 	}
 	
 	
