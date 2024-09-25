@@ -2,6 +2,8 @@ package com.jun.hospital.entity;
 
 import java.io.Serializable;
 
+import javax.print.Doc;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
@@ -10,11 +12,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
+import lombok.ToString;
 
 @Entity @Getter
 public class PrimaryDoctor {
 	
-	@Embeddable
+	@Embeddable @ToString @Getter
 	public static class Id implements Serializable {
 		@Column(name = "PATIENT_SSN")
 		private Long patientSSN;
@@ -42,10 +45,21 @@ public class PrimaryDoctor {
 		 
 	}
 	
+	private void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+	
+	private void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+	
 	public static PrimaryDoctor assignPrimaryDoctor(Patient patient , Doctor doctor) {
 		PrimaryDoctor primaryDoctor = new PrimaryDoctor();
-		primaryDoctor.doctor = doctor;
-		primaryDoctor.patient = patient;
+		
+		primaryDoctor.id.doctorSSN = doctor.getDoctorSsn();
+		primaryDoctor.id.patientSSN = patient.getSsn();
+		primaryDoctor.setDoctor(doctor);
+		primaryDoctor.setPatient(patient);
 		return primaryDoctor;
 	}
 	

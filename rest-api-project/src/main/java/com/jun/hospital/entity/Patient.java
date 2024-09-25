@@ -2,7 +2,6 @@ package com.jun.hospital.entity;
 
 import com.jun.hospital.dto.PatientRequest;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +18,7 @@ public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ssn;
+
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -31,12 +31,16 @@ public class Patient {
 	private String name;
 	
 	private String address;
+	
+	public void assignDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
 
 	public static Patient of(PatientRequest patientRequest) {
 		Patient patient = new Patient();
 		patient.address = patientRequest.getAddress();
 		patient.age = patientRequest.getAge(); 
-		
+		patient.name = patientRequest.getName();
 		return patient;
 		
 	}

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import com.jun.hospital.dto.DoctorRequest;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,8 +15,7 @@ public class Doctor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "DOCTOR_SSN")
-	private Long ssn;
+	private Long doctorSsn;
 	
 	private String name;
 	

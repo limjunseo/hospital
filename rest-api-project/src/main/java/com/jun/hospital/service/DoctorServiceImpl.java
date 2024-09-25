@@ -4,18 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jun.hospital.entity.Doctor;
+import com.jun.hospital.repository.DoctorRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class DoctorService {
+public class DoctorServiceImpl {
 	
 	@Autowired
-	private final DoctorServiceImpl doctorServiceImpl;
+	private final DoctorRepository doctorRepository;
 	
 	public Doctor findById(Long doctorSSN) {
-		return doctorServiceImpl.findById(doctorSSN);
+		return doctorRepository.findById(doctorSSN).get(); //예외처리 필요
 	}
 
 }
