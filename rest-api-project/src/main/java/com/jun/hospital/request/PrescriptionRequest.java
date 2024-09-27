@@ -7,8 +7,8 @@ import lombok.Getter;
 @Getter 
 public class PrescriptionRequest {
 	
-	private Long DoctorSSN;
-	private Long paitentSSN;
+	private Long doctorSSN;
+	private Long patient;
 	private String companyName;
 	private String tradeName;
 	private LocalDate date;

@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class PrescriptionServiceImpl {
+public class EnrollPrescriptionServiceImpl {
 	
 	@Autowired
 	private final DoctorService doctorService;

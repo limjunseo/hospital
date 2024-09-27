@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jun.hospital.entity.Doctor;
 import com.jun.hospital.entity.Patient;
@@ -20,12 +21,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-@Controller 
+@RestController 
 public class PatientEnrollController {
 	
 	private final EnrollPatientServiceImpl enrollPatientService;
 	
-	@PostMapping(value = "/patient-doctor/{doctorSSN}") //기존 DB에 존재하는 의사와 새로운 환자의 관계를 등록
+	@PostMapping(value = "/primaryDoctor/{doctorSSN}") //기존 DB에 존재하는 의사와 새로운 환자의 관계를 등록
 	public ResponseEntity<PrimaryDoctor.Id> enrollPatient(
 			@PathVariable(name = "doctorSSN") Long doctorSSN, 
 			@RequestBody PatientRequest patientRequest) {
@@ -36,7 +37,7 @@ public class PatientEnrollController {
 		return new ResponseEntity<PrimaryDoctor.Id>(id , HttpStatus.CREATED);
 	}   
 	
-	@PostMapping(value = "patient-new-doctor")
+	@PostMapping(value = "primaryDoctor") //새로운 의사와 새로운 환자의 관계를 등록
 	public ResponseEntity<PrimaryDoctor.Id> enrollPatientAndDoctor(
 			@RequestBody EnrollRequest enrollRequest) {
 		

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.jun.hospital.request.PrescriptionRequest;
+import com.jun.hospital.response.PrescriptionResponse;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -55,7 +56,7 @@ public class Prescription {
 		Prescription prescription = new Prescription();
 		
 		prescription.id.doctorSSN = prescriptionRequest.getDoctorSSN();
-		prescription.id.patientSSN = prescriptionRequest.getPaitentSSN();
+		prescription.id.patientSSN = prescriptionRequest.getPatient();
 		prescription.id.companyName = prescriptionRequest.getCompanyName();
 		prescription.id.tradeName = prescriptionRequest.getTradeName();
 		prescription.date = prescriptionRequest.getDate();
@@ -63,6 +64,7 @@ public class Prescription {
 		
 		return prescription;
 	}
+	
 	
 	
 	//method
