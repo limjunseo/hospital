@@ -2,7 +2,7 @@ package com.jun.hospital.entity;
 
 import java.time.LocalDate;
 
-import com.jun.hospital.dto.DoctorRequest;
+import com.jun.hospital.request.DoctorRequest;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.jun.hospital.dto.DoctorRequest;
-import com.jun.hospital.dto.EnrollRequest;
-import com.jun.hospital.dto.PatientRequest;
 import com.jun.hospital.entity.Doctor;
 import com.jun.hospital.entity.Patient;
 import com.jun.hospital.entity.PrimaryDoctor;
+import com.jun.hospital.request.DoctorRequest;
+import com.jun.hospital.request.EnrollRequest;
+import com.jun.hospital.request.PatientRequest;
 import com.jun.hospital.service.EnrollPatientServiceImpl;
 
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor
 @Controller 
-public class EnrollPatientController {
+public class PatientEnrollController {
 	
 	private final EnrollPatientServiceImpl enrollPatientService;
 	
@@ -31,7 +31,8 @@ public class EnrollPatientController {
 			@RequestBody PatientRequest patientRequest) {
 		
 		Patient patient = Patient.of(patientRequest);
-		PrimaryDoctor.Id id = enrollPatientService.enrollPatient(patient, doctorSSN);
+		PrimaryDoctor savedPrimaryDoctor = enrollPatientService.enrollPatient(patient, doctorSSN);
+		PrimaryDoctor.Id id = savedPrimaryDoctor.getId();
 		return new ResponseEntity<PrimaryDoctor.Id>(id , HttpStatus.CREATED);
 	}   
 	
@@ -44,8 +45,8 @@ public class EnrollPatientController {
 		
 		Patient patient = Patient.of(patientRequest);
 		Doctor doctor = Doctor.of(doctorRequest);
-		PrimaryDoctor.Id id = enrollPatientService.enrollPatientAndDoctor(patient, doctor);
-		
+		PrimaryDoctor savedPrimaryDoctor = enrollPatientService.enrollPatientAndDoctor(patient, doctor);
+		PrimaryDoctor.Id id = savedPrimaryDoctor.getId();
 		return new ResponseEntity<PrimaryDoctor.Id>(id, HttpStatus.CREATED);
 	}
 	

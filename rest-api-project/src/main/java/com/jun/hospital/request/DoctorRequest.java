@@ -1,4 +1,6 @@
-package com.jun.hospital.dto;
+package com.jun.hospital.request;
+
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,10 +10,9 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PatientRequest {
-	
-	private int age;
+public class DoctorRequest {
 	private String name;
-	private String address;
-
+	private String speciality;
+	private LocalDate exp_years;
+	
 }

@@ -16,12 +16,12 @@ public class EnrollPatientService {
 	private final EnrollPatientServiceImpl enrollPatientServiceImpl;
 	
 	@Transactional //기존 의사와 환자 등록
-	public PrimaryDoctor.Id enrollPatient(Patient patient, Long doctorSSN) {
+	public PrimaryDoctor enrollPatient(Patient patient, Long doctorSSN) {
 		return enrollPatientServiceImpl.enrollPatient(patient, doctorSSN);	
 	}
 	
 	@Transactional //새로운 의사와 환자 등록
-	public PrimaryDoctor.Id enrollPatientAndDoctor(Patient patient, Doctor doctor) {
+	public PrimaryDoctor enrollPatientAndDoctor(Patient patient, Doctor doctor) {
 		return enrollPatientServiceImpl.enrollPatientAndDoctor(patient, doctor);
 	}
 	

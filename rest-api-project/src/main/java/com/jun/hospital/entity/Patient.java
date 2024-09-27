@@ -1,7 +1,6 @@
 package com.jun.hospital.entity;
 
-import com.jun.hospital.dto.PatientRequest;
-
+import com.jun.hospital.request.PatientRequest;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

@@ -8,6 +8,6 @@ import lombok.Getter;
 public class Company {
 	
 	@Id
-	private String name;
+	private String companyName;
 
 }

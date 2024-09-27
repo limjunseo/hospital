@@ -28,17 +28,17 @@ public class EnrollPatientServiceImpl {
 	@Autowired
 	private final DoctorRepository doctorRepository;
 	
-	public PrimaryDoctor.Id enrollPatient(Patient patient, Long doctorSSN) {
+	public PrimaryDoctor enrollPatient(Patient patient, Long doctorSSN) {
 		Doctor doctor = doctorService.findById(doctorSSN);
 		patient.assignDoctor(doctor);
 		Patient savedPatient = patientRepository.save(patient);
 
 		PrimaryDoctor primaryDoctor = PrimaryDoctor.assignPrimaryDoctor(savedPatient, doctor);
 		PrimaryDoctor savedPrimaryDoctor = primaryDoctorRepository.save(primaryDoctor);	
-		return savedPrimaryDoctor.getId();
+		return savedPrimaryDoctor;
 	}
 	
-	public PrimaryDoctor.Id enrollPatientAndDoctor(Patient patient, Doctor doctor) {
+	public PrimaryDoctor  enrollPatientAndDoctor(Patient patient, Doctor doctor) {
 		Doctor savedDoctor = doctorRepository.save(doctor); //의사 등록
 		patient.assignDoctor(savedDoctor); 
 		
@@ -46,7 +46,7 @@ public class EnrollPatientServiceImpl {
 		
 		PrimaryDoctor primaryDoctor = PrimaryDoctor.assignPrimaryDoctor(savedPatient, savedDoctor);
 		PrimaryDoctor savedPrimaryDoctor = primaryDoctorRepository.save(primaryDoctor);
-		return savedPrimaryDoctor.getId();
+		return savedPrimaryDoctor;
 		
 	}
 	

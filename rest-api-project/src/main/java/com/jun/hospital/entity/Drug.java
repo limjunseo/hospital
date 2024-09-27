@@ -20,7 +20,15 @@ public class Drug {
 		
 		@Column(name = "COMPANY_NAME")
 		private String companyName;
+		
+		public static Drug.Id create(String tradeName, String companyName) {
+			Drug.Id id = new Drug.Id();
+			id.tradeName = tradeName;
+			id.companyName = companyName;
+			return id;
+		}
 	}
+	
 	
 	@EmbeddedId
 	private Drug.Id id = new Drug.Id();
