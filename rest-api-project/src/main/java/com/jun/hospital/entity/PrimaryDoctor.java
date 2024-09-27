@@ -2,8 +2,6 @@ package com.jun.hospital.entity;
 
 import java.io.Serializable;
 
-import javax.print.Doc;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;

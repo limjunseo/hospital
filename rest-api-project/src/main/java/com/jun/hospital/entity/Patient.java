@@ -2,6 +2,7 @@ package com.jun.hospital.entity;
 
 import com.jun.hospital.dto.PatientRequest;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
