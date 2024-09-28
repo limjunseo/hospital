@@ -18,5 +18,9 @@ public class DoctorServiceImpl {
 	public Doctor findById(Long doctorSSN) {
 		return doctorRepository.findById(doctorSSN).get(); //예외처리 필요
 	}
+	
+	public Doctor findPrimaryDoctorByPatientSsn(Long patientSsn) {
+		return doctorRepository.findPrimaryDoctorBypatientSsn(patientSsn);
+	}
 
 }

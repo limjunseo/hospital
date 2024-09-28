@@ -20,5 +20,10 @@ public class DoctorService {
 	public Doctor findById(Long doctorSSN) {
 		return doctorServiceImpl.findById(doctorSSN);
 	}
+	
+	@Transactional
+	public Doctor findPrimaryDoctorByPatientSsn(Long patientSsn) {
+		return doctorServiceImpl.findPrimaryDoctorByPatientSsn(patientSsn);
+	}
 
 }
