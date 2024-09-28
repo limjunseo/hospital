@@ -19,7 +19,7 @@ public class PatientListController {
 	private final PatientService patientService;
 	
 
-	@GetMapping(value = "patient/{doctorSsn}")
+	@GetMapping(value = "patient/doctor/{doctorSsn}")
 	public java.util.List<PatientResponse> findAllPatientsByDoctorSsn(@PathVariable(name = "doctorSsn") Long doctorSsn) {
 		List<Patient> patients =  patientService.findAllPatientsByDoctorSsn(doctorSsn);
 		
