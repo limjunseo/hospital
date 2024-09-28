@@ -1,5 +1,8 @@
 package com.jun.hospital.service;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +32,7 @@ public class EnrollPrescriptionServiceImpl {
 	private final PrescriptionRepository prescriptionRepository;
 	
 	public Prescription enrollPrescription(Prescription prescription) {
-		Prescription.Id pk = prescription.getId(); //Prescription의 pk(doctorSSN, patientSSN, companyName, tradeName)
+		Prescription.Id pk = prescription.getId(); //Prescription의 pk(doctorSSN, patientSSN, companyName, tradeName)		
 		
 		Doctor doctor = doctorService.findById(pk.getDoctorSSN());
 		Patient patient = patientService.findById(pk.getPatientSSN());
@@ -44,13 +47,15 @@ public class EnrollPrescriptionServiceImpl {
 		
 		return prescriptionRepository.save(prescription);
 		
-		
+	}
+
+	public Prescription updatePrescription(Prescription existingPrescription, int quantity) {
+		existingPrescription.updatePrescription(LocalDate.now(), quantity);
+		return existingPrescription;
 	}
 	
-//	private boolean isSamePrescription(Prescription prescription) { //의사가 해당 약을 이미 환자에게 처방한적이 있는지
-//		
-//	}
-//	
+
+	
 
 }
 

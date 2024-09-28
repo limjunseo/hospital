@@ -6,12 +6,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.ToString;
 
+//의사와 환자의 주치의 관계엔티티
 @Entity @Getter
 public class PrimaryDoctor {
 	
@@ -27,13 +29,13 @@ public class PrimaryDoctor {
 	@EmbeddedId
 	private Id id = new Id();
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(
 			name = "PATIENT_SSN",
 			insertable = false, updatable = false)
 	private Patient patient;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(
 			name = "DOCTOR_SSN",
 			insertable = false, updatable = false)

@@ -22,7 +22,7 @@ public class PrescriptionEnrollController {
 	@PostMapping(value = "/prescription")
 	public PrescriptionResponse prescriptionEnroll(@RequestBody PrescriptionRequest prescriptionRequest) {
 		Prescription prescription = Prescription.of(prescriptionRequest);
-		Prescription savedPrescription = prescriptionService.enrollPrescription(prescription);
+		Prescription savedPrescription = prescriptionService.enrollOrUpdatePrescription(prescription);
 		
 		return PrescriptionResponse.of(savedPrescription);
 	}

@@ -8,11 +8,13 @@ import com.jun.hospital.request.PrescriptionRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 
+//의사가 환자에게 어떤 약을 처방하는 처방전 관계엔티티
 @Entity @Getter
 public class Prescription {
 	
@@ -35,16 +37,16 @@ public class Prescription {
 	@EmbeddedId
 	private Prescription.Id id = new Id();
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "DOCTOR_SSN", insertable = false, updatable = false)
 	private Doctor doctor;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PATIENT_SSN", insertable = false, updatable = false)
 	private Patient patient;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns({
 		@JoinColumn(name = "COMPANY_NAME", referencedColumnName = "COMPANY_NAME", insertable = false, updatable = false ),
 		@JoinColumn(name = "TRADE_NAME", referencedColumnName = "TRADE_NAME", insertable = false, updatable = false)
@@ -75,6 +77,11 @@ public class Prescription {
 		this.doctor = doctor;
 		this.patient = patient;
 		this.drug = drug;
+	}
+	
+	public void updatePrescription(LocalDate date, int quantity) {
+		this.date = date;
+		this.quantity = quantity;
 	}
 
 	
