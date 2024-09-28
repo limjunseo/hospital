@@ -39,12 +39,10 @@ public class EnrollPrescriptionServiceImpl {
 		
 		String companyName = pk.getCompanyName();
 		String tradeName = pk.getTradeName();
-		log.info("tradeName : {}, companyName : {}", tradeName, companyName);
 		Drug.Id drugId = Drug.Id.create(tradeName, companyName);
 		
-		Drug drug = drugService.findById(drugId); //오류발생지점
+		Drug drug = drugService.findById(drugId); 
 		
-		log.info("여기는?");
 		prescription.prescribe(doctor, patient, drug); //비즈니스 Impl 계층에서 객체참조 설정하기
 		
 		return prescriptionRepository.save(prescription);

@@ -32,3 +32,23 @@ public class PrescriptionResponse {
 		return prescriptionResponse;
 	}
 }
+
+
+//아래와 같은 일반적인 response 객체를 생성하는것도 고려
+
+//public class ApiResponse<T> {
+//    private List<T> data;
+//    private int totalItems;
+//    private String message;
+//
+//    // Getters, Setters, Constructor
+//}
+
+
+//public class PaginatedResponse<T> {
+//    private List<T> data;
+//    private long totalItems;
+//    private int currentPage;
+//    private int pageSize;
+//    private int totalPages;
+//}
