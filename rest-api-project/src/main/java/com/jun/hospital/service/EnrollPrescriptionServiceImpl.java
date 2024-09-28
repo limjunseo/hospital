@@ -47,6 +47,10 @@ public class EnrollPrescriptionServiceImpl {
 		
 	}
 	
+//	private boolean isSamePrescription(Prescription prescription) { //의사가 해당 약을 이미 환자에게 처방한적이 있는지
+//		
+//	}
+//	
 
 }
 

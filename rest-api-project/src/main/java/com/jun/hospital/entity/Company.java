@@ -9,5 +9,7 @@ public class Company {
 	
 	@Id
 	private String companyName;
+	
+	private String phoneNum;
 
 }

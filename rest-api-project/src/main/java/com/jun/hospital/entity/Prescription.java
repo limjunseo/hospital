@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.jun.hospital.request.PrescriptionRequest;
-import com.jun.hospital.response.PrescriptionResponse;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 
 @Entity @Getter
@@ -35,13 +35,16 @@ public class Prescription {
 	@EmbeddedId
 	private Prescription.Id id = new Id();
 	
+	@ManyToOne
 	@JoinColumn(name = "DOCTOR_SSN", insertable = false, updatable = false)
 	private Doctor doctor;
 	
+	@ManyToOne
 	@JoinColumn(name = "PATIENT_SSN", insertable = false, updatable = false)
 	private Patient patient;
 	
 	
+	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name = "COMPANY_NAME", referencedColumnName = "COMPANY_NAME", insertable = false, updatable = false ),
 		@JoinColumn(name = "TRADE_NAME", referencedColumnName = "TRADE_NAME", insertable = false, updatable = false)

@@ -7,6 +7,7 @@ import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -33,6 +34,7 @@ public class Drug {
 	@EmbeddedId
 	private Drug.Id id = new Drug.Id();
 	
+	@ManyToOne
 	@JoinColumn(name = "COMPANY_NAME", insertable = false, updatable = false)
 	private Company company;
 
