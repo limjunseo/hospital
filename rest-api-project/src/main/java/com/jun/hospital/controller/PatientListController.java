@@ -27,6 +27,7 @@ public class PatientListController {
 				patients.stream()
 						.map(PatientResponse::of)
 						.toList();
+		
 		return patientResponses;
 	}
 }
