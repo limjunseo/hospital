@@ -25,9 +25,9 @@ public class PatientEnrollController {
 	
 	private final EnrollPatientServiceImpl enrollPatientService;
 	
-	@PostMapping(value = "/primaryDoctor/{doctorSSN}") //기존 DB에 존재하는 의사와 새로운 환자의 관계를 등록
+	@PostMapping(value = "/patient/doctor/{doctorSsn}/primaryDoctor") //기존 DB에 존재하는 의사와 새로운 환자의 관계를 등록
 	public ResponseEntity<PrimaryDoctor.Id> enrollPatient(
-			@PathVariable(name = "doctorSSN") Long doctorSSN, 
+			@PathVariable(name = "doctorSsn") Long doctorSSN, 
 			@RequestBody PatientRequest patientRequest) {
 		
 		Patient patient = Patient.of(patientRequest);
@@ -36,7 +36,7 @@ public class PatientEnrollController {
 		return new ResponseEntity<PrimaryDoctor.Id>(id , HttpStatus.CREATED);
 	}   
 	
-	@PostMapping(value = "primaryDoctor") //새로운 의사와 새로운 환자의 관계를 등록
+	@PostMapping(value = "/patient/doctor/primaryDoctor") //새로운 의사와 새로운 환자의 관계를 등록
 	public ResponseEntity<PrimaryDoctor.Id> enrollPatientAndDoctor(
 			@RequestBody EnrollRequest enrollRequest) {
 		
