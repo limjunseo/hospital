@@ -12,19 +12,20 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 //의사가 환자에게 어떤 약을 처방하는 처방전 관계엔티티
 @Entity @Getter
 public class Prescription {
 	
-	@Getter 
+	@Getter @EqualsAndHashCode
 	public static class Id implements Serializable {
 		@Column(name = "DOCTOR_SSN")
-		private Long doctorSSN;
+		private Long doctorSsn;
 		
 		@Column(name = "PATIENT_SSN")
-		private Long patientSSN;
+		private Long patientSsn;
 		
 		@Column(name = "COMPANY_NAME")
 		private String companyName;
@@ -60,8 +61,8 @@ public class Prescription {
 	public static Prescription of(PrescriptionRequest prescriptionRequest) {
 		Prescription prescription = new Prescription();
 		
-		prescription.id.doctorSSN = prescriptionRequest.getDoctorSSN();
-		prescription.id.patientSSN = prescriptionRequest.getPatient();
+		prescription.id.doctorSsn = prescriptionRequest.getDoctorSsn();
+		prescription.id.patientSsn = prescriptionRequest.getPatientSsn();
 		prescription.id.companyName = prescriptionRequest.getCompanyName();
 		prescription.id.tradeName = prescriptionRequest.getTradeName();
 		prescription.quantity = prescriptionRequest.getQuantity();

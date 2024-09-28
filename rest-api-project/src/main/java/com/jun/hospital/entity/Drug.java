@@ -9,13 +9,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
 @Entity @Getter
 public class Drug {
 	
-	@Embeddable @ToString @Getter
+	@Embeddable @ToString @Getter @EqualsAndHashCode
 	public static class Id implements Serializable{
 		@Column(name = "TRADE_NAME")
 		private String tradeName;

@@ -34,8 +34,8 @@ public class EnrollPrescriptionServiceImpl {
 	public Prescription enrollPrescription(Prescription prescription) {
 		Prescription.Id pk = prescription.getId(); //Prescription의 pk(doctorSSN, patientSSN, companyName, tradeName)		
 		
-		Doctor doctor = doctorService.findById(pk.getDoctorSSN());
-		Patient patient = patientService.findById(pk.getPatientSSN());
+		Doctor doctor = doctorService.findById(pk.getDoctorSsn());
+		Patient patient = patientService.findById(pk.getPatientSsn());
 		
 		String companyName = pk.getCompanyName();
 		String tradeName = pk.getTradeName();

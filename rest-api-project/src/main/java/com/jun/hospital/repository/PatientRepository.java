@@ -11,8 +11,8 @@ import com.jun.hospital.entity.Patient;
 public interface PatientRepository extends JpaRepository<Patient, Long>{
 	
 	@Query("SELECT p FROM PrimaryDoctor pri, Patient p "
-			+ "WHERE pri.patient_ssn = p.ssn "
-			+ "AND pri.doctor_ssn = :doctorSsn")
+			+ "WHERE pri.id.patientSsn = p.ssn "
+			+ "AND pri.id.doctorSsn = :doctorSsn")
 	List<Patient> findPatientsByDoctorSsn(@Param("doctorSsn") Long doctorSsn);
 
 }

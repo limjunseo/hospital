@@ -10,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -17,13 +18,13 @@ import lombok.ToString;
 @Entity @Getter
 public class PrimaryDoctor {
 	
-	@Embeddable @ToString @Getter
+	@Embeddable @ToString @Getter @EqualsAndHashCode
 	public static class Id implements Serializable {
 		@Column(name = "PATIENT_SSN")
-		private Long patientSSN;
+		private Long patientSsn;
 		
 		@Column(name = "DOCTOR_SSN")
-		private Long doctorSSN;
+		private Long doctorSsn;
 	}
 	
 	@EmbeddedId
@@ -56,8 +57,8 @@ public class PrimaryDoctor {
 	public static PrimaryDoctor assignPrimaryDoctor(Patient patient , Doctor doctor) {
 		PrimaryDoctor primaryDoctor = new PrimaryDoctor();
 		
-		primaryDoctor.id.doctorSSN = doctor.getDoctorSsn();
-		primaryDoctor.id.patientSSN = patient.getSsn();
+		primaryDoctor.id.doctorSsn = doctor.getDoctorSsn();
+		primaryDoctor.id.patientSsn = patient.getSsn();
 		primaryDoctor.setDoctor(doctor);
 		primaryDoctor.setPatient(patient);
 		return primaryDoctor;

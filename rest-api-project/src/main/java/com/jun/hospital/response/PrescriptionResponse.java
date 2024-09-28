@@ -23,8 +23,8 @@ public class PrescriptionResponse {
 		Prescription.Id id = prescription.getId();
 		PrescriptionResponse prescriptionResponse = new PrescriptionResponse();
 		
-		prescriptionResponse.doctorSSN = id.getDoctorSSN();
-		prescriptionResponse.patientSSN = id.getPatientSSN();
+		prescriptionResponse.doctorSSN = id.getDoctorSsn();
+		prescriptionResponse.patientSSN = id.getPatientSsn();
 		prescriptionResponse.tradeName = id.getTradeName();
 		prescriptionResponse.company = id.getCompanyName();
 		prescriptionResponse.date = prescription.getPrescribeDate();

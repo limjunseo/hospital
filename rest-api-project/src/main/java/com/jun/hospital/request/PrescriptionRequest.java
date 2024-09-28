@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PrescriptionRequest {
 	
-	private Long doctorSSN;
-	private Long patient;
+	private Long doctorSsn;
+	private Long patientSsn;
 	private String companyName;
 	private String tradeName;
 	private int quantity;

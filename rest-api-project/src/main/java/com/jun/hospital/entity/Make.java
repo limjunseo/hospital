@@ -9,11 +9,13 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Entity @Getter
 public class Make { //회사가 만드는 약의 관계엔티티
 	
+	@EqualsAndHashCode @Getter
 	public static class Id implements Serializable {
 		@Column(name = "COMPANY_NAME") 
 		private String companyName;
