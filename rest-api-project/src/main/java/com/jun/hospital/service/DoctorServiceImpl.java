@@ -7,9 +7,11 @@ import com.jun.hospital.entity.Doctor;
 import com.jun.hospital.repository.DoctorRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class DoctorServiceImpl {
 	
 	@Autowired
@@ -20,7 +22,9 @@ public class DoctorServiceImpl {
 	}
 	
 	public Doctor findPrimaryDoctorByPatientSsn(Long patientSsn) {
-		return doctorRepository.findPrimaryDoctorBypatientSsn(patientSsn);
+		Doctor savedDoctor =  doctorRepository.findPrimaryDoctorBypatientSsn(patientSsn);
+		log.info("저장된 doctor : {}" , savedDoctor);
+		return savedDoctor;
 	}
 
 }

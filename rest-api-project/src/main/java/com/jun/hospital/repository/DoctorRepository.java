@@ -8,9 +8,9 @@ import com.jun.hospital.entity.Doctor;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
-	@Query("SELECT d FROM primary_doctor pri "
-			+ "JOIN doctor d "
-			+ "WHERE pri.id.doctorSsn = d.doctorSsn "
-			+ "AND pri.id.doctorSsn = :patientSsn")
+	@Query("SELECT d FROM PrimaryDoctor pri "
+			+ "JOIN Doctor d "
+			+ "ON pri.id.doctorSsn = d.doctorSsn "
+			+ "WHERE pri.id.patientSsn = :patientSsn")
 	Doctor findPrimaryDoctorBypatientSsn(@Param("patientSsn") Long patientSsn);
 }
