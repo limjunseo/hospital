@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import com.jun.hospital.entity.Prescription;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrescriptionResponse {
@@ -25,7 +27,7 @@ public class PrescriptionResponse {
 		prescriptionResponse.patientSSN = id.getPatientSSN();
 		prescriptionResponse.tradeName = id.getTradeName();
 		prescriptionResponse.company = id.getCompanyName();
-		prescriptionResponse.date = prescription.getDate();
+		prescriptionResponse.date = prescription.getPrescribeDate();
 		
 		return prescriptionResponse;
 	}

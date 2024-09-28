@@ -1,7 +1,6 @@
 package com.jun.hospital.service;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +10,13 @@ import com.jun.hospital.entity.Drug;
 import com.jun.hospital.entity.Patient;
 import com.jun.hospital.entity.Prescription;
 import com.jun.hospital.repository.PrescriptionRepository;
-import com.jun.hospital.response.PrescriptionResponse;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class EnrollPrescriptionServiceImpl {
 	
 	@Autowired
@@ -39,10 +39,12 @@ public class EnrollPrescriptionServiceImpl {
 		
 		String companyName = pk.getCompanyName();
 		String tradeName = pk.getTradeName();
+		log.info("tradeName : {}, companyName : {}", tradeName, companyName);
 		Drug.Id drugId = Drug.Id.create(tradeName, companyName);
 		
-		Drug drug = drugService.findById(drugId);
+		Drug drug = drugService.findById(drugId); //오류발생지점
 		
+		log.info("여기는?");
 		prescription.prescribe(doctor, patient, drug); //비즈니스 Impl 계층에서 객체참조 설정하기
 		
 		return prescriptionRepository.save(prescription);

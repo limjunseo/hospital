@@ -25,6 +25,7 @@ public class EnrollPrescriptionService {
 	@Transactional
 	public Prescription enrollOrUpdatePrescription(Prescription prescription) {
 		Optional<Prescription> existingPrescription = prescriptionRepository.findById(prescription.getId());
+
 		return (existingPrescription.isPresent()) ? 
 				prescriptionServiceImpl.updatePrescription(existingPrescription.get(), prescription.getQuantity()) : 
 			prescriptionServiceImpl.enrollPrescription(prescription);

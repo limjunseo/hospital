@@ -53,7 +53,7 @@ public class Prescription {
 	})
 	private Drug drug;
 
-	private LocalDate date;
+	private LocalDate prescribeDate;
 	
 	private int quantity;
 	
@@ -64,8 +64,8 @@ public class Prescription {
 		prescription.id.patientSSN = prescriptionRequest.getPatient();
 		prescription.id.companyName = prescriptionRequest.getCompanyName();
 		prescription.id.tradeName = prescriptionRequest.getTradeName();
-		prescription.date = prescriptionRequest.getDate();
 		prescription.quantity = prescriptionRequest.getQuantity();
+		prescription.prescribeDate = LocalDate.now();
 		
 		return prescription;
 	}
@@ -79,8 +79,8 @@ public class Prescription {
 		this.drug = drug;
 	}
 	
-	public void updatePrescription(LocalDate date, int quantity) {
-		this.date = date;
+	public void updatePrescription(LocalDate prescribeDate, int quantity) {
+		this.prescribeDate = prescribeDate;
 		this.quantity = quantity;
 	}
 

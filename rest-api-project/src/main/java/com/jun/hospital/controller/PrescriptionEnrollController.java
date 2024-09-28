@@ -1,6 +1,8 @@
 package com.jun.hospital.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,20 +13,22 @@ import com.jun.hospital.response.PrescriptionResponse;
 import com.jun.hospital.service.EnrollPrescriptionService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @RestController
+@Slf4j
 public class PrescriptionEnrollController {
 	
 	@Autowired
 	private final EnrollPrescriptionService prescriptionService;
 	
 	@PostMapping(value = "/prescription")
-	public PrescriptionResponse prescriptionEnroll(@RequestBody PrescriptionRequest prescriptionRequest) {
+	public ResponseEntity<PrescriptionResponse> prescriptionEnroll(@RequestBody PrescriptionRequest prescriptionRequest) {
 		Prescription prescription = Prescription.of(prescriptionRequest);
-		Prescription savedPrescription = prescriptionService.enrollOrUpdatePrescription(prescription);
-		
-		return PrescriptionResponse.of(savedPrescription);
+		Prescription newPrescription = prescriptionService.enrollOrUpdatePrescription(prescription);
+
+		return new ResponseEntity<PrescriptionResponse>(PrescriptionResponse.of(newPrescription), HttpStatus.OK);
 	}
 
 }
