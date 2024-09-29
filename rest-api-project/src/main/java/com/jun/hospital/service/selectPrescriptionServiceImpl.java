@@ -20,5 +20,9 @@ public class selectPrescriptionServiceImpl {
 	public List<Prescription> findAllPrescriptionsByDoctorSsn(Long doctorSsn) {
 		return prescriptionRepository.findAllPrescriptionsByDoctorSsn(doctorSsn);
 	}
+	
+	public List<Prescription> findAllPrescriptionsByPatientSsn(Long patientSsn) {
+		return prescriptionRepository.findAllPrescriptionsByPatientSsn(patientSsn);
+	}
 
 }

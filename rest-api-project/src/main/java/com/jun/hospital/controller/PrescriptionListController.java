@@ -27,5 +27,14 @@ public class PrescriptionListController {
 							.toList();
 	}
 	
+	@GetMapping(value = "/patient/{patientSsn}/prescription")
+	public List<PrescriptionResponse> getAllPrescriptionsByPatientSsn(@PathVariable("patientSsn") Long patientSsn) {
+		List<Prescription> prescriptions = selectPrescriptionService.findAllPrescriptionsByPatientSsn(patientSsn);
+		
+		return prescriptions.stream()
+							.map(PrescriptionResponse::of)
+							.toList();
+	}
+	
 
 }
