@@ -26,7 +26,7 @@ public class EnrollPrescriptionServiceImpl {
 	private final PatientService patientService;
 	
 	@Autowired
-	private final DrugService drugService;
+	private final SelectDrugService drugService;
 	
 	@Autowired
 	private final PrescriptionRepository prescriptionRepository;

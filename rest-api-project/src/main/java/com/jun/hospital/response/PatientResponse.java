@@ -1,12 +1,16 @@
 package com.jun.hospital.response;
 
+import java.time.LocalDate;
+
 import com.jun.hospital.entity.Patient;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter 
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class PatientResponse {
 	
 	private Long patientSsn;
