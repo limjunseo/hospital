@@ -14,7 +14,7 @@ public interface DrugRepository extends JpaRepository<Drug, Drug.Id> {
 
 	@Query("SELECT d FROM Drug d "
 			+ "JOIN Make m "
-			+ "ON m.id.tradeName = d.tradeName " //drug와 make의 조인조건
+			+ "ON m.id.tradeName = d.id.tradeName " //drug와 make의 조인조건
 			+ "WHERE m.id.companyName = :companyName")
 	List<Drug> findDrugsByCompanyName(@Param("companyName") String companyName);
 }
