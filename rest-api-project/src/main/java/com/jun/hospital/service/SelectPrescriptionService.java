@@ -11,9 +11,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class selectPrescriptionService {
+public class SelectPrescriptionService {
 
-	private final selectPrescriptionServiceImpl selectPrescriptionServiceImpl;
+	private final SelectPrescriptionServiceImpl selectPrescriptionServiceImpl;
 	
 	@Transactional
 	public List<Prescription> findAllPrescriptionsByDoctorSsn(Long doctorSsn) {
