@@ -19,7 +19,7 @@ public class DoctorDetailController {
 	private final DoctorService doctorService;
 	
 	@GetMapping(value = "/patient/{patientSsn}/doctor/primaryDoctor")
-	public DoctorResponse findAllPatientsByDoctorSsn(@PathVariable("patientSsn") Long patientSsn) {
+	public DoctorResponse getAllPatientsByDoctorSsn(@PathVariable("patientSsn") Long patientSsn) {
 		Doctor doctor = doctorService.findPrimaryDoctorByPatientSsn(patientSsn);
 		
 		return DoctorResponse.of(doctor);

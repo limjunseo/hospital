@@ -24,7 +24,7 @@ public class PrescriptionEnrollController {
 	private final EnrollPrescriptionService prescriptionService;
 	
 	@PostMapping(value = "/patient/doctor/prescription")
-	public ResponseEntity<PrescriptionResponse> prescriptionEnroll(@RequestBody PrescriptionRequest prescriptionRequest) {
+	public ResponseEntity<PrescriptionResponse> enrollPrescription(@RequestBody PrescriptionRequest prescriptionRequest) {
 		Prescription prescription = Prescription.of(prescriptionRequest);
 		Prescription newPrescription = prescriptionService.enrollOrUpdatePrescription(prescription);
 
