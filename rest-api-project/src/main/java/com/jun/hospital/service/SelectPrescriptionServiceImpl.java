@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class selectPrescriptionServiceImpl {
+public class SelectPrescriptionServiceImpl {
 	
 	@Autowired
 	private final PrescriptionRepository prescriptionRepository;
