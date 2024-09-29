@@ -2,7 +2,6 @@ package com.jun.hospital.response;
 
 import com.jun.hospital.entity.Company;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

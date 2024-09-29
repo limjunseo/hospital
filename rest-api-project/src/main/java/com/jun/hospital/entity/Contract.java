@@ -10,12 +10,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Entity @Getter
 public class Contract {
 	
-	@Embeddable @Getter
+	@Embeddable @Getter @EqualsAndHashCode
 	public static class Id implements Serializable {
 		@Column(name = "COMPANY_NAME")
 		private String companyName;

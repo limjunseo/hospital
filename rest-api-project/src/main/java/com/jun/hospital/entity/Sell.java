@@ -10,13 +10,14 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
 @Entity 
 public class Sell { //약국에서 파는 약의 관계를 나타내는 엔티티
 	
-	@Embeddable @Getter @ToString
+	@Embeddable @Getter @ToString @EqualsAndHashCode
 	public static class Id implements Serializable {
 		
 		@Column(name = "PHARMACY_NAME")

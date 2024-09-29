@@ -15,7 +15,7 @@ import lombok.Getter;
 @Entity @Getter
 public class Make { //회사가 만드는 약의 관계엔티티
 	
-	@EqualsAndHashCode @Getter
+	@EqualsAndHashCode @Getter 
 	public static class Id implements Serializable {
 		@Column(name = "COMPANY_NAME") 
 		private String companyName;
@@ -38,5 +38,15 @@ public class Make { //회사가 만드는 약의 관계엔티티
 	}) 
 	private Drug drug;
 	
+	public static Make of(String companyName, String tradeName) {
+		Make make = new Make();
+		make.id.companyName = companyName;
+		make.id.tradeName = tradeName;	
+		return make;
+	}
+	
+	public void by(Company company) {
+		this.company = company;
+	}
 
 }
