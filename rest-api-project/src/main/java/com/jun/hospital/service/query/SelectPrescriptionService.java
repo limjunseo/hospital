@@ -1,4 +1,4 @@
-package com.jun.hospital.service;
+package com.jun.hospital.service.query;
 
 import java.util.List;
 

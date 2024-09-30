@@ -1,4 +1,4 @@
-package com.jun.hospital.service;
+package com.jun.hospital.service.command;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +9,7 @@ import com.jun.hospital.entity.PrimaryDoctor;
 import com.jun.hospital.repository.DoctorRepository;
 import com.jun.hospital.repository.PatientRepository;
 import com.jun.hospital.repository.PrimaryDoctorRepository;
+import com.jun.hospital.service.query.SelectDoctorService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class EnrollPatientServiceImpl {
 	
 	@Autowired
-	private final DoctorService doctorService;
+	private final SelectDoctorService doctorService;
 	
 	@Autowired
 	private final PrimaryDoctorRepository primaryDoctorRepository;

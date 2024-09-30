@@ -1,4 +1,4 @@
- package com.jun.hospital.service;
+ package com.jun.hospital.service.query;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class PatientService {
+public class SelectPatientService {
 	
-	private final PatientServiceImpl patientServiceImpl;
+	private final SelectPatientServiceImpl patientServiceImpl;
 	
 	@Transactional
 	public Patient findById(Long patientSSN) {

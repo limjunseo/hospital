@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jun.hospital.entity.Drug;
 import com.jun.hospital.entity.Make;
 import com.jun.hospital.request.DrugRequest;
-import com.jun.hospital.service.MakeDrugService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class DrugMakeController { //기존에 존재하는 회사가 새로운 약을 개발함
 	
-	private final MakeDrugService makeDrugService;
+	private final com.jun.hospital.service.command.MakeDrugService makeDrugService;
 	
 	@PostMapping(value = "/drug/company/{companyName}/make")
 	public ResponseEntity<Make.Id> makeNewDrug(@PathVariable("companyName") String companyName, 

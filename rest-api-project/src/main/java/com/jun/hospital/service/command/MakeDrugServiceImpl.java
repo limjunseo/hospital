@@ -1,4 +1,4 @@
-package com.jun.hospital.service;
+package com.jun.hospital.service.command;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

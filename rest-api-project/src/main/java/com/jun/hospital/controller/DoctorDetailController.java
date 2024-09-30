@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jun.hospital.entity.Doctor;
 import com.jun.hospital.response.DoctorResponse;
-import com.jun.hospital.service.DoctorService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DoctorDetailController {
 	
-	private final DoctorService doctorService;
+	private final com.jun.hospital.service.query.SelectDoctorService doctorService;
 	
 	@GetMapping(value = "/patient/{patientSsn}/doctor/primaryDoctor")
 	public DoctorResponse getAllPatientsByDoctorSsn(@PathVariable("patientSsn") Long patientSsn) {

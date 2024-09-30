@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jun.hospital.entity.Drug;
 import com.jun.hospital.response.DrugResponse;
-import com.jun.hospital.service.SelectDrugService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class DrugListController {
 	
-	private final SelectDrugService selectDrugService;
+	private final com.jun.hospital.service.query.SelectDrugService selectDrugService;
 
 	@GetMapping(value = "company/{companyName}/drugs/make")
 	public List<DrugResponse> getAllDrugsByCompanyName(@PathVariable("companyName") String companyName){

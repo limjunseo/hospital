@@ -1,4 +1,4 @@
-package com.jun.hospital.service;
+package com.jun.hospital.service.command;
 
 import java.util.Optional;
 

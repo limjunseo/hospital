@@ -1,4 +1,4 @@
-package com.jun.hospital.service;
+package com.jun.hospital.service.query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class DoctorService {
+public class SelectDoctorService {
 	
 	@Autowired
-	private final DoctorServiceImpl doctorServiceImpl;
+	private final SelectDoctorServiceImpl doctorServiceImpl;
 	
 	@Transactional
 	public Doctor findById(Long doctorSSN) {

@@ -1,4 +1,4 @@
-package com.jun.hospital.service;
+package com.jun.hospital.service.command;
 
 import java.time.LocalDate;
 
@@ -10,6 +10,9 @@ import com.jun.hospital.entity.Drug;
 import com.jun.hospital.entity.Patient;
 import com.jun.hospital.entity.Prescription;
 import com.jun.hospital.repository.PrescriptionRepository;
+import com.jun.hospital.service.query.SelectDoctorService;
+import com.jun.hospital.service.query.SelectPatientService;
+import com.jun.hospital.service.query.SelectDrugService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,13 +23,13 @@ import lombok.extern.slf4j.Slf4j;
 public class EnrollPrescriptionServiceImpl {
 	
 	@Autowired
-	private final DoctorService doctorService;
+	private final SelectDoctorService doctorService;
 	
 	@Autowired
-	private final PatientService patientService;
+	private final SelectPatientService patientService;
 	
 	@Autowired
-	private final SelectDrugService drugService;
+	private final SelectDrugService  drugService;
 	
 	@Autowired
 	private final PrescriptionRepository prescriptionRepository;

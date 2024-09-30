@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jun.hospital.entity.Prescription;
 import com.jun.hospital.response.PrescriptionResponse;
-import com.jun.hospital.service.SelectPrescriptionService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class PrescriptionListController {
 	
-	private final SelectPrescriptionService selectPrescriptionService;
+	private final com.jun.hospital.service.query.SelectPrescriptionService selectPrescriptionService;
 	
 	@GetMapping(value = "/doctor/{doctorSsn}/prescription")
 	public java.util.List<PrescriptionResponse> getAllPrescriptionsByDoctorSsn(@PathVariable("doctorSsn") Long doctorSsn) {

@@ -13,7 +13,6 @@ import com.jun.hospital.entity.PrimaryDoctor;
 import com.jun.hospital.request.DoctorRequest;
 import com.jun.hospital.request.EnrollRequest;
 import com.jun.hospital.request.PatientRequest;
-import com.jun.hospital.service.EnrollPatientServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController 
 public class PatientEnrollController {
 	
-	private final EnrollPatientServiceImpl enrollPatientService;
+	private final com.jun.hospital.service.command.EnrollPatientServiceImpl enrollPatientService;
 	
 	@PostMapping(value = "/patient/doctor/{doctorSsn}/primaryDoctor") //기존 DB에 존재하는 의사와 새로운 환자의 관계를 등록
 	public ResponseEntity<PrimaryDoctor.Id> enrollPatient(

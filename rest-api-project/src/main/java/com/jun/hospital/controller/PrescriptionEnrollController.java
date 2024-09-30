@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jun.hospital.entity.Prescription;
 import com.jun.hospital.request.PrescriptionRequest;
 import com.jun.hospital.response.PrescriptionResponse;
-import com.jun.hospital.service.EnrollPrescriptionService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PrescriptionEnrollController {
 	
 	@Autowired
-	private final EnrollPrescriptionService prescriptionService;
+	private final com.jun.hospital.service.command.EnrollPrescriptionService prescriptionService;
 	
 	@PostMapping(value = "/patient/doctor/prescription")
 	public ResponseEntity<PrescriptionResponse> enrollPrescription(@RequestBody PrescriptionRequest prescriptionRequest) {

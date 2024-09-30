@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jun.hospital.entity.Patient;
 import com.jun.hospital.response.PatientResponse;
-import com.jun.hospital.service.PatientService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class PatientListController {
 	
-	private final PatientService patientService;
+	private final com.jun.hospital.service.query.SelectPatientService patientService;
 	
 
 	@GetMapping(value = "patient/doctor/{doctorSsn}")
