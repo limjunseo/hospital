@@ -1,4 +1,4 @@
-package com.jun.hospital.controller;
+package com.jun.hospital.controller.query;
 
 import java.util.List;
 

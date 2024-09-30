@@ -1,4 +1,4 @@
-package com.jun.hospital.controller;
+package com.jun.hospital.controller.command;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

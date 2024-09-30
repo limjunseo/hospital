@@ -1,4 +1,4 @@
-package com.jun.hospital.controller;
+package com.jun.hospital.controller.command;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
