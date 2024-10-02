@@ -9,13 +9,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-@Entity @Getter
+@Entity @Getter @ToString
 public class Reservation {
 	
 	@Embeddable @ToString @Getter @EqualsAndHashCode
@@ -28,18 +29,27 @@ public class Reservation {
 		
 		@Column(name = "RESERVATION_TIME")
 		private LocalDateTime reservationTime;
+		
+		public static Reservation.Id create(Long doctorSsn, Long patientSsn, LocalDateTime reservationTime) {
+			Reservation.Id id = new Reservation.Id();
+			id.doctorSsn = doctorSsn;
+			id.patientSsn = patientSsn;
+			id.reservationTime = reservationTime;
+			return id;
+		}
 	}
 	
 	@EmbeddedId
 	private Reservation.Id id = new Reservation.Id();
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "DOCTOR_SSN", insertable = false, updatable = false)
 	private Doctor doctor;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PATIENT_SSN", insertable = false, updatable = false)
 	private Patient patient;
+	
 	
 	
 	public static Reservation of(EnrollReservationRequest request, Long doctorSsn, Long patientSsn) {
@@ -55,6 +65,10 @@ public class Reservation {
 	public void reserve(Patient patient, Doctor doctor) {
 		this.patient = patient; //객체 설정
 		this.doctor = doctor;
+	}
+	
+	public void changeReservation(LocalDateTime reservationTime) {
+		this.id.reservationTime = reservationTime;
 	}
 	
 	

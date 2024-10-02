@@ -1,5 +1,7 @@
 package com.jun.hospital.service.command;
 
+import java.time.temporal.ChronoUnit;
+
 import org.springframework.stereotype.Service;
 
 import com.jun.hospital.entity.Doctor;
@@ -10,9 +12,11 @@ import com.jun.hospital.repository.PatientRepository;
 import com.jun.hospital.repository.ReservationRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class ReservationServiceImpl {
 	
 	private final ReservationRepository reservationRepository;
@@ -28,12 +32,14 @@ public class ReservationServiceImpl {
 		Patient patient = patientRepository.findById(id.getPatientSsn()).get();
 		
 		reservation.reserve(patient, doctor); //객체 설정
-		
-		return reservationRepository.save(reservation);
+		Reservation savedReservation =  reservationRepository.saveAndFlush(reservation);
+		return savedReservation;
 	}
 	
 	public void deleteReservation(Reservation.Id reservationId) {
-		reservationRepository.deleteById(reservationId);
+		reservationRepository.deleteReservation(reservationId.getDoctorSsn(), 
+				reservationId.getPatientSsn(), 
+				reservationId.getReservationTime());
 	}
 	
 
