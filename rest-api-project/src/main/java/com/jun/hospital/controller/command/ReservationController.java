@@ -8,12 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.service.annotation.PutExchange;
 
 import com.jun.hospital.entity.Reservation;
 import com.jun.hospital.request.EnrollReservationRequest;
+import com.jun.hospital.request.NewReservationReqeust;
 import com.jun.hospital.service.command.ReservationService;
 
 import lombok.RequiredArgsConstructor;
@@ -46,6 +49,19 @@ public class ReservationController {
 		reservationService.deleteReservation(reservationId);
 		
 		return ResponseEntity.ok("Reservation deleted successfully");
+	}
+	
+	@PutMapping(value = "/patient/{patientSsn}/doctor/{doctorSsn}/reservation") 
+	public ResponseEntity<Reservation.Id> changeReservation(@PathVariable("patientSsn") Long patientSsn,
+															@PathVariable("doctorSsn") Long doctorSsn,
+															@RequestParam("existingDateTime") LocalDateTime exsitingDateTime,
+															@RequestBody NewReservationReqeust newReservationReqeust) {
+		
+		Reservation.Id existingReservationId = Reservation.Id.create(doctorSsn, patientSsn, exsitingDateTime); //삭제할 레코드
+		Reservation newReservation = Reservation.of(newReservationReqeust, doctorSsn, patientSsn);
+		
+		Reservation.Id newReservationId = reservationService.changeReservation(existingReservationId, newReservation);
+		return new ResponseEntity<Reservation.Id>(newReservationId, HttpStatus.OK);
 	}
 
 }

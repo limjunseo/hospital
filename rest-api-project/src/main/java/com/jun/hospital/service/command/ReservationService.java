@@ -24,4 +24,8 @@ public class ReservationService {
 		reservationServiceImpl.deleteReservation(reservationId);
 	}
 
+	@Transactional
+	public Reservation.Id changeReservation(Reservation.Id existingReservationId, Reservation newReservation) {
+		return reservationServiceImpl.changeReservation(existingReservationId, newReservation);
+	}
 }

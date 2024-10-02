@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.jun.hospital.request.EnrollReservationRequest;
+import com.jun.hospital.request.NewReservationReqeust;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -61,15 +62,21 @@ public class Reservation {
 		return reservation;
 	}
 	
+	public static Reservation of(NewReservationReqeust request, Long doctorSsn, Long patientSsn) {
+		Reservation reservation = new Reservation();
+		reservation.id.doctorSsn = doctorSsn;
+		reservation.id.patientSsn = patientSsn;
+		reservation.id.reservationTime = request.getNewReservationTime(); //reservation 객체의 기본 타입만 설정함.
+		
+		return reservation;
+	}
+	
 	//method
 	public void reserve(Patient patient, Doctor doctor) {
 		this.patient = patient; //객체 설정
 		this.doctor = doctor;
 	}
 	
-	public void changeReservation(LocalDateTime reservationTime) {
-		this.id.reservationTime = reservationTime;
-	}
 	
 	
 }
