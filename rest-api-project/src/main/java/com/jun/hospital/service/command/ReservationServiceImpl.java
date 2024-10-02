@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class EnrollReservationServiceImpl {
+public class ReservationServiceImpl {
 	
 	private final ReservationRepository reservationRepository;
 	
@@ -30,6 +30,10 @@ public class EnrollReservationServiceImpl {
 		reservation.reserve(patient, doctor); //객체 설정
 		
 		return reservationRepository.save(reservation);
+	}
+	
+	public void deleteReservation(Reservation.Id reservationId) {
+		reservationRepository.deleteById(reservationId);
 	}
 	
 

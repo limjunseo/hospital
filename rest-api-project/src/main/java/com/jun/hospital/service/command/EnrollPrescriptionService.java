@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jun.hospital.entity.Prescription;
+import com.jun.hospital.entity.Reservation;
 import com.jun.hospital.repository.PrescriptionRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -32,4 +33,6 @@ public class EnrollPrescriptionService {
 			
 		//기존 처방전이 있으면 날짜만 persist context에서 업데이트, 없으면 새로운 처방전 등록.
 	}
+	
+
 }
