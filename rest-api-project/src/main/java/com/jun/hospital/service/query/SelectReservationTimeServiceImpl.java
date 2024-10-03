@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.jun.hospital.entity.Reservation;
 import com.jun.hospital.repository.ReservationRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class SelectReservationTimeServiceImpl {
 	private final ReservationRepository reservationRepository;
 		
 	public List<LocalTime> findAvailableReservationTimes(Long doctorSsn, LocalDate date) {
-		List<LocalTime> reservedTimes = reservationRepository.findAllTimesByDoctorAndDate(doctorSsn, date)
+		List<LocalTime> reservedTimes = reservationRepository.findReservedTimesByDoctorAndDate(doctorSsn, date)
 				.stream()
 				.map(time -> time.toLocalTime())
 				.toList();
@@ -34,6 +35,12 @@ public class SelectReservationTimeServiceImpl {
 						.filter(t -> !reservedTimes.contains(t))
 						.toList();
 	}
+
+	
+	public List<Reservation> findReservationsByDoctorAndDate(Long doctorSsn, LocalDate reservationDate) {
+		return reservationRepository.findReservationsByDoctorAndDate(doctorSsn, reservationDate);
+	}
+
 	
 	private List<LocalTime> generateAllTimes(LocalTime startTime, LocalTime endTime) {
 		final Duration interval = Duration.ofMinutes(30);
@@ -48,5 +55,4 @@ public class SelectReservationTimeServiceImpl {
 		
 		return lists;
 	}
-
 }

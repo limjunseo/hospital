@@ -2,6 +2,7 @@ package com.jun.hospital.repository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +20,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Reserv
 			+ "FROM Reservation r "
 			+ "WHERE r.doctor_ssn = :doctorSsn "
 			+ "AND DATE(r.reservation_time) = :searchDate", nativeQuery = true)
-	public List<java.sql.Time> findAllTimesByDoctorAndDate(@Param("doctorSsn") Long doctorSsn, @Param("searchDate") LocalDate date);
+	public List<java.sql.Time> findReservedTimesByDoctorAndDate(@Param("doctorSsn") Long doctorSsn, @Param("searchDate") LocalDate date);
 
 //	@Modifying
 //	@Query("DELETE FROM Reservation r "
@@ -38,4 +39,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Reserv
 	public void deleteReservation(@Param("doctorSsn") Long doctorSsn,
 			@Param("patientSsn") Long patientSsn,
 			@Param("reservationTime") LocalDateTime reservationTime);
+	
+	
+	@Query("SELECT r FROM Reservation r "
+			+ "WHERE r.id.doctorSsn = :doctorSsn "
+			+ "AND DATE(r.id.reservationTime) = :reservationTime")
+	public List<Reservation> findReservationsByDoctorAndDate(@Param("doctorSsn") Long doctorSsn, 
+			@Param("reservationTime") LocalDate reservationDate);
 }

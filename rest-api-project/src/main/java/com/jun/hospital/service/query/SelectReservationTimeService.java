@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.jun.hospital.entity.Reservation;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -18,5 +20,8 @@ public class SelectReservationTimeService {
 		return selectReservationTimeServiceImpl.findAvailableReservationTimes(doctorSsn, date);
 	}
 	
+	public List<Reservation> findReservationsByDoctorAndDate(Long doctorSsn, LocalDate reservationDate) {
+		return selectReservationTimeServiceImpl.findReservationsByDoctorAndDate(doctorSsn, reservationDate);
+	}
 
 }

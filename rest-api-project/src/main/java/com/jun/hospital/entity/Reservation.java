@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.jun.hospital.request.EnrollReservationRequest;
-import com.jun.hospital.request.NewReservationReqeust;
+import com.jun.hospital.request.UpdateReservationRequest;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -62,7 +62,7 @@ public class Reservation {
 		return reservation;
 	}
 	
-	public static Reservation of(NewReservationReqeust request, Long doctorSsn, Long patientSsn) {
+	public static Reservation of(UpdateReservationRequest request, Long doctorSsn, Long patientSsn) {
 		Reservation reservation = new Reservation();
 		reservation.id.doctorSsn = doctorSsn;
 		reservation.id.patientSsn = patientSsn;

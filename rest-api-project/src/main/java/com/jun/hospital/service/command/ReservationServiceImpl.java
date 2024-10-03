@@ -1,5 +1,8 @@
 package com.jun.hospital.service.command;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.jun.hospital.entity.Doctor;
@@ -44,6 +47,8 @@ public class ReservationServiceImpl {
 		
 		return savedReservation.getId();
 	}
+	
+
 	
 	
 	private void reserve(Reservation reservation) { //객체 설정

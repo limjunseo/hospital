@@ -16,7 +16,7 @@ import org.springframework.web.service.annotation.PutExchange;
 
 import com.jun.hospital.entity.Reservation;
 import com.jun.hospital.request.EnrollReservationRequest;
-import com.jun.hospital.request.NewReservationReqeust;
+import com.jun.hospital.request.UpdateReservationRequest;
 import com.jun.hospital.service.command.ReservationService;
 
 import lombok.RequiredArgsConstructor;
@@ -55,7 +55,7 @@ public class ReservationController {
 	public ResponseEntity<Reservation.Id> changeReservation(@PathVariable("patientSsn") Long patientSsn,
 															@PathVariable("doctorSsn") Long doctorSsn,
 															@RequestParam("existingDateTime") LocalDateTime exsitingDateTime,
-															@RequestBody NewReservationReqeust newReservationReqeust) {
+															@RequestBody UpdateReservationRequest newReservationReqeust) {
 		
 		Reservation.Id existingReservationId = Reservation.Id.create(doctorSsn, patientSsn, exsitingDateTime); //삭제할 레코드
 		Reservation newReservation = Reservation.of(newReservationReqeust, doctorSsn, patientSsn);
