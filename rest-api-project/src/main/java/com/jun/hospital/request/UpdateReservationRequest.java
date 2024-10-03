@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor 
 @AllArgsConstructor
-public class NewReservationReqeust {
+public class UpdateReservationRequest {
 	
 	private LocalDateTime newReservationTime;
 
